@@ -10,6 +10,7 @@ package aparcamiento;
  * @author daw1
  */
 public class Plaza {
+
     private Vehiculo v;
     private int num_plaza, sotano;
     private String tipo;
@@ -18,10 +19,35 @@ public class Plaza {
         this.num_plaza = num_plaza;
         this.sotano = sotano;
     }
+
+    public int precio() {
+        int resultado = 0;
+        if (v != null) {
+            if (v instanceof Coche) {
+                Coche c = (Coche) v;
+                if (c.getTipo().equalsIgnoreCase("largo")) {
+                    resultado = 55;
+                } else {
+                    resultado = 40;
+                }
+            } else {
+                resultado = 25;
+            }
+            if (sotano == 2) {
+                resultado = resultado - 5;
+            }
+        } else {
+            resultado = 0;
+        }
+        return resultado;
+    }
     
-    public int precio(){
-        int resultado=0;
-        
+    @Override
+    public String toString(){ 
+        String resultado="Numero Plaza= "+num_plaza+"  Sotano= "+sotano+"\n";
+        if(v!=null){
+            resultado=resultado.concat("Vehículo= "+v+"\n"+"Precio= "+precio()+" euros");
+        }
         return resultado;
     }
 
@@ -54,16 +80,15 @@ public class Plaza {
     }
 
     public String setTipo(String tipo) {
-        String resultado="";
-       
-        if(tipo.equalsIgnoreCase("c")||(tipo.equalsIgnoreCase("m"))){
-            resultado="Tipo añadido"; 
+        String resultado = "";
+
+        if (tipo.equalsIgnoreCase("c") || (tipo.equalsIgnoreCase("m"))) {
+            resultado = "Tipo añadido";
             this.tipo = tipo;
         } else {
-            resultado="Tipo incorrecto";
+            resultado = "Tipo incorrecto";
         }
         return resultado;
     }
-    
-    
+
 }
