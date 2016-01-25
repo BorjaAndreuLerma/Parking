@@ -13,7 +13,7 @@ public class Plaza {
 
     private Vehiculo v;
     private int num_plaza, sotano;
-    private String tipo;
+    private char tipo;
 
     public Plaza(int num_plaza, int sotano) {
         this.num_plaza = num_plaza;
@@ -33,7 +33,7 @@ public class Plaza {
             } else {
                 resultado = 25;
             }
-            if (sotano == 2) {
+            if (sotano >= 2) {
                 resultado = resultado - 5;
             }
         } else {
@@ -44,9 +44,9 @@ public class Plaza {
     
     @Override
     public String toString(){ 
-        String resultado="Numero Plaza= "+num_plaza+"  Sotano= "+sotano+"\n";
+        String resultado="Nº Plaza: "+num_plaza+"  Sotano: "+sotano+"\n";
         if(v!=null){
-            resultado=resultado.concat("Vehículo= "+v+"\n"+"Precio= "+precio()+" euros");
+            resultado=resultado.concat(v+"\n"+"Precio= "+precio()+" euros");
         }
         return resultado;
     }
@@ -75,14 +75,14 @@ public class Plaza {
         this.sotano = sotano;
     }
 
-    public String getTipo() {
+    public char getTipo() {
         return tipo;
     }
 
-    public String setTipo(String tipo) {
+    public String setTipo(char tipo) {
         String resultado = "";
 
-        if (tipo.equalsIgnoreCase("c") || (tipo.equalsIgnoreCase("m"))) {
+        if (tipo=='c' || tipo=='m' || tipo=='C' || tipo=='M') {
             resultado = "Tipo añadido";
             this.tipo = tipo;
         } else {

@@ -65,6 +65,6 @@ public class Vehiculo {
 
     @Override
     public String toString() {
-        return "Datos vehícluo: " + matricula + " " + modelo + " " + color;
+        return "Vehículo: " + matricula + " " + modelo + " " + color;
     }
 }
